@@ -9,6 +9,7 @@ class Producto:
     PRECIO_MINIMO = 0
     DESCUENTO_MINIMO = 0
     DESCUENTO_MAXIMO = 40
+    IVA = 0.19
 
     def __init__(self, nombre: str, precio_base: float):
         self._validar_precio(precio_base)
@@ -36,6 +37,10 @@ class Producto:
         self._validar_descuento(descuento)
         self._descuento = descuento
 
-    def calcular_precio_final(self) -> float:      # ← único método nuevo
-        precio_con_descuento = self.precio_base * (1 - self._descuento / 100)
-        return precio_con_descuento * 1.19
+    def _precio_con_descuento(self) -> float:
+        """Retorna el precio base después de aplicar el descuento."""
+        return self.precio_base * (1 - self._descuento / 100)
+
+    def calcular_precio_final(self) -> float:
+        """Aplica primero el descuento y luego el IVA del 19%."""
+        return self._precio_con_descuento() * (1 + self.IVA)    
