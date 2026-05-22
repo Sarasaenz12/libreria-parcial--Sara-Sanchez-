@@ -35,3 +35,7 @@ class Producto:
         """Aplica un descuento porcentual al producto."""
         self._validar_descuento(descuento)
         self._descuento = descuento
+
+    def calcular_precio_final(self) -> float:      # ← único método nuevo
+        precio_con_descuento = self.precio_base * (1 - self._descuento / 100)
+        return precio_con_descuento * 1.19
