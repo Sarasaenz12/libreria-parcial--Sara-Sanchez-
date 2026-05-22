@@ -41,3 +41,17 @@ class TestDescuento:
     def test_descuento_negativo_lanza_error(self, producto):
         with pytest.raises(DescuentoInvalidoError):
             producto.aplicar_descuento(-1)
+
+class TestPrecioFinal:
+
+    def test_CP07_precio_final_con_descuento_20_e_iva(self, producto):
+        producto.aplicar_descuento(20)
+        assert producto.calcular_precio_final() == pytest.approx(95.2)
+
+    def test_CP08_precio_final_sin_descuento_solo_iva(self, producto):
+        producto.aplicar_descuento(0)
+        assert producto.calcular_precio_final() == pytest.approx(119.0)
+
+    def test_precio_final_con_descuento_maximo(self, producto):
+        producto.aplicar_descuento(40)
+        assert producto.calcular_precio_final() == pytest.approx(71.4)
