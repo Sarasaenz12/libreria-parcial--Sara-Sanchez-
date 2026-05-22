@@ -60,3 +60,14 @@ Justificacion: Si existen productos exentos de IVA, la lógica de `calcular_prec
 | CP-07 | R3 | Precio final aplica descuento 20% e IVA 19% | Producto precio=100.0, descuento=20% | ninguno | `calcular_precio_final()` | (100 × 0.80) × 1.19 = 95.2 | Positivo |
 | CP-08 | R3 | Precio final sin descuento solo aplica IVA | Producto precio=100.0, descuento=0% | ninguno | `calcular_precio_final()` | 100 × 1.19 = 119.0 | Borde |
 
+## Reporte de cobertura
+
+____________________________________________________ coverage: platform win32, python 3.12.10-final-0 _____________________________________________________
+
+Name              Stmts   Miss  Cover   Missing
+-----------------------------------------------
+src\__init__.py       0      0   100%
+src\producto.py      27      0   100%
+-----------------------------------------------
+TOTAL                27      0   100%
+=================================================================== 10 passed in 0.13s ====================================================================
