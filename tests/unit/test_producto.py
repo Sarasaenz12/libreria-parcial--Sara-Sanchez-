@@ -23,3 +23,21 @@ class TestPrecioBase:
     def test_CP03_precio_negativo_lanza_error(self):
         with pytest.raises(PrecioInvalidoError):
             Producto("Libro", -10.0)
+
+class TestDescuento:
+
+    def test_CP04_descuento_cero_es_valido(self, producto):
+        producto.aplicar_descuento(0)
+        assert producto._descuento == 0
+
+    def test_CP05_descuento_40_es_valido(self, producto):
+        producto.aplicar_descuento(40)
+        assert producto._descuento == 40
+
+    def test_CP06_descuento_41_lanza_error(self, producto):
+        with pytest.raises(DescuentoInvalidoError):
+            producto.aplicar_descuento(41)
+
+    def test_descuento_negativo_lanza_error(self, producto):
+        with pytest.raises(DescuentoInvalidoError):
+            producto.aplicar_descuento(-1)
