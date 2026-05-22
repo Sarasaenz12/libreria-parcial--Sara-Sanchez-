@@ -7,6 +7,8 @@ class DescuentoInvalidoError(ValueError):
 class Producto:
 
     PRECIO_MINIMO = 0
+    DESCUENTO_MINIMO = 0
+    DESCUENTO_MAXIMO = 40
 
     def __init__(self, nombre: str, precio_base: float):
         self._validar_precio(precio_base)
@@ -21,9 +23,15 @@ class Producto:
                 f"El precio base debe ser mayor que cero. Se recibió: {precio}"
             )
 
-    def aplicar_descuento(self, descuento: float) -> None:
-        if descuento < 0 or descuento > 40:      # mínimo para pasar los tests
+    def _validar_descuento(self, descuento: float) -> None:
+        """Lanza DescuentoInvalidoError si el descuento esta fuera del rango permitido."""
+        if descuento < self.DESCUENTO_MINIMO or descuento > self.DESCUENTO_MAXIMO:
             raise DescuentoInvalidoError(
-                f"El descuento debe estar entre 0% y 40%. Se recibió: {descuento}%"
+                f"El descuento debe estar entre {self.DESCUENTO_MINIMO}% "
+                f"y {self.DESCUENTO_MAXIMO}%. Se recibió: {descuento}%"
             )
+
+    def aplicar_descuento(self, descuento: float) -> None:
+        """Aplica un descuento porcentual al producto."""
+        self._validar_descuento(descuento)
         self._descuento = descuento
