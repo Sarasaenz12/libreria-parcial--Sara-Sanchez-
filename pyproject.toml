@@ -1,11 +1,23 @@
 [project]
-name = "parcial-pruebas"
+name = "libreria-parcial"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "pytest>=9.0.3",
     "pytest-bdd>=8.1.0",
     "pytest-cov>=7.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-bdd>=8.1.0",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "smoke: pruebas del flujo principal",
+    "critical: pruebas de funcionalidad critica",
+    "regression: pruebas de regresion",
 ]
