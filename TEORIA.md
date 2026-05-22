@@ -23,7 +23,7 @@ La diferencia entre TDD u BDD es que en el TDD esta pensado mas para desarrollad
 PA-3:
 
 Tener una cobertura alta solo significa que muchas líneas de código fueron ejecutadas durante las pruebas pero no garantiza que las pruebas estén verificando correctamente el comportamiento del sistema, un programa puede tener 95% de cobertura y aun así contener errores importantes. 
-Por ejemplo, una función bancaria podría calcular transferencias y las pruebas solo revisar que la función se ejecute sin fallar, pero no validar si el dinero transferido es el correcto. En ese caso, la cobertura sería alta porque el código se ejecutó, pero el bug seguiría existiendo.
+Imagina una función que valida la contraseña de un usuario, Las pruebas ejecutan la función con varias entradas y verifican únicamente que el sistema no se bloquee ni arroje errores, sin embargo nunca comprueban si realmente está aceptando la contraseña correcta y rechazando la incorrecta.
 
 PA-4:
 
